@@ -1,0 +1,2 @@
+Guía 4 DPS --> Creada con el comando react-native init... Se inicia con react-native run-android
+Guía 5 DPS --> Creada con npx expo-create-app/ expo init... Se inicia con npx expo start
