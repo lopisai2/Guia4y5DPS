@@ -109,7 +109,7 @@ const App=()=>{
                 style={styles.listado}
                 data={reservas}
                 renderItem={({item})=> <Cita item={item} eliminarPaciente={eliminarPaciente} />}
-                keyExtractor={cita=>cita.id}
+                keyExtractor={reserva=>reserva.id}
               />
               </>   
             )}  

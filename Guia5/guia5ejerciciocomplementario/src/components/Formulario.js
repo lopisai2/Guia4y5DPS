@@ -53,34 +53,35 @@ const Formulario=({reservas,setReservas, guardarMostrarForm, guardarReservasStor
            cantidad.trim()==='' ||
            fecha.trim()==='' ||
            hora.trim()===''||
-           seccion==null
+           seccion===null ||
+           seccion.trim()===''
         )
         {   
             mostrarAlerta();         
             return
         }else
         {
-            
+            const reserva={ nombre,cantidad,fecha,hora,seccion};
+            reserva.id=shortid.generate();
+            console.log(reserva)
+    
+            //Actualizar citas
+            const reservasNuevo=[...reservas,reserva];
+            setReservas(reservasNuevo);
+            //Trasladar la nueva cita al Storage
+            guardarReservasStorage(JSON.stringify(reservasNuevo));
+    
+            //Ocultar Formulario.js
+            guardarMostrarForm(false);
+            //Resetear Formulario.js
+            guardarNombre('');
+            guardarCantidad('');
+            guardarFecha('');
+            guardarHora('');    
+            guardarSeccion('');
         }
 
-        const reserva={ nombre,cantidad,fecha,hora,seccion};
-        reserva.id=shortid.generate();
-        console.log(reserva)
-
-        //Actualizar citas
-        const reservasNuevo=[...reservas,reserva];
-        setReservas(reservasNuevo);
-        //Trasladar la nueva cita al Storage
-        guardarReservasStorage(JSON.stringify(reservasNuevo));
-
-        //Ocultar Formulario.js
-        guardarMostrarForm(false);
-        //Resetear Formulario.js
-        guardarNombre('');
-        guardarCantidad('');
-        guardarFecha('');
-        guardarHora('');    
-        guardarSeccion('');
+       
 
     }
 
